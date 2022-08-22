@@ -17,11 +17,11 @@
 	# cd /root
 
 	# Make sure your root
-	if [ "$HOME" != "/root" ]
-	then
-    	printf "Run while logged in as root\n"
-    	exit 1
-	fi
+	# if [ "$HOME" != "/root" ]
+	# then
+    # 	printf "Run while logged in as root\n"
+    # 	exit 1
+	# fi
 
 	# Enable Command Aliasing
 	shopt -s expand_aliases
