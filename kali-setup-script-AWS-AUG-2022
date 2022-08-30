@@ -452,6 +452,19 @@
 	git clone https://github.com/dievus/Oh365UserFinder.git
 	cd Oh365UserFinder
 	pip3 install -r requirements.txt
+	cd
+	
+	# Install IPC-Recon
+	printf '\n============================================================\n'
+	printf  '=========Installing IPC-Recon\n'
+	printf  '============================================================\n\n'
+	wget --header 'Authorization: token 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' https://github.com/ipc-security/IPC-Recon-Script/archive/refs/heads/main.zip
+	unzip main.zip
+	rm main.zip
+	mv IPC-Recon-Script-main IPC-Recon-Script
+	cd IPC-Recon-Script
+	chmod +x *.sh
+	cd
 	
 	# Unzip Rockyou.txt.gz
 	printf '\n============================================================\n'
