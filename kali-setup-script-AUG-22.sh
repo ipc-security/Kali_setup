@@ -3,18 +3,18 @@
 # ===================================================
 #
 #  --------------------------------------------------
-#  Bash Script to Setup a Kali VM on Windows 10 Non Scanner
+#  Bash Script to Setup a Kali AWS
 #  --------------------------------------------------
 #
 #  Author:    Brian McGinn
 #  Created:   March 2020
-#  Last Edit: August 18 2022
-#  Editor:    Akash Zatakia
+#  Last Edit: August 30 2022
+#  Editor:    Brian McGinn
 # ====================================================
 
 	# logging in as root user and changing the directory
-	# sudo su -
-	# cd /root
+	sudo su -
+	cd /root
 
 	# Make sure your root
 	 if [ "$HOME" != "/root" ]
@@ -39,7 +39,11 @@
 	apt update
 	apt upgrade
 	apt full-upgrade
-
+	
+	# Install scripts with apt install
+	printf '\n============================================================\n'
+	printf  '=========Install scripts with apt install\n'
+	printf '============================================================\n\n'
 	apt install \
     	python3-virtualenv \
     	python3-dev \
@@ -55,17 +59,26 @@
     	jq \
     	sublist3r \
     	parallel
-
+	
+	# Install scripts with pip
+	printf '\n============================================================\n'
+	printf  '=========Install scripts with pip\n'
+	printf  '============================================================\n\n'
 	pip install poetry
+	pip install pipreqs
+	pip3 install arjun
 	python3 -m pip install lsassy
 	python3 -m pip install pipenv
 	python3 -m pip install apachetomcatscanner
+	
+	# Git cloning repos
+	printf '\n============================================================\n'
+	printf  '=========Git cloning repos\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/bypass-url-parser.git
 	git clone https://github.com/ipc-security/adfsbrute.git
 	git clone https://github.com/ipc-security/zphisher.git
 	git clone https://github.com/ipc-security/18-plus-Facebook-Phishing.git
-	git clone https://github.com/ipc-security/Shhhloader.git
-	git clone https://github.com/ipc-security/ScareCrow-CobaltStrike.git
 	git clone https://github.com/ipc-security/youtube-phishing-page.git
 	git clone https://github.com/ipc-security/http2smugl.git
 	git clone https://github.com/ipc-security/365-Stealer.git
@@ -79,17 +92,12 @@
 	git clone https://github.com/ipc-security/procrustes.git
 
 	# Install Docker/Docker Compose
-	apt-get remove docker docker-engine docker.io containerd runc
-	sudo apt-get install \
-    	ca-certificates \
-    	curl \
-    	gnupg \
-    	lsb-release
-    mkdir -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    echo \ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-	apt-get update
-	sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+	sudo apt install -y docker.io
+	sudo systemctl enable docker --now
+	printf '%s\n' "deb https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker-ce.list
+	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker-ce-archive-keyring.gpg
+	sudo apt update
+	sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 	# Install Golang
 	wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
@@ -113,18 +121,19 @@
 	go install github.com/tomnomnom/gf@latest
 	go install github.com/tomnomnom/qsreplace@latest
 	go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+	go install github.com/ffuf/ffuf@latest
 
 	# Install Findomain
 	printf '\n============================================================\n'
 	printf  '=========Installing Findomain\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	curl -LO https://github.com/findomain/findomain/releases/latest/download/findomain-linux.zip
 	unzip findomain-linux.zip
 	rm findomain-linux.zip
 	chmod +x findomain
 	sudo mv findomain /bin
 
-    # Install CTFR
+    	# Install CTFR
 	printf '\n============================================================\n'
 	printf  '=========Installing CTFR\n'
 	printf '============================================================\n\n'
@@ -136,122 +145,72 @@
 	rm -r ctfr
 	cd
 
-    # Install Sudomy
+    	# Install Sudomy
 	printf '\n============================================================\n'
 	printf  '=========Installing Sudomy\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone --recursive https://github.com/screetsec/Sudomy.git
-    cd Sudomy
-    python3 -m pip install -r requirements.txt
-    sudo cp sudomy /usr/local/bin
-    cd
+    	cd Sudomy
+    	python3 -m pip install -r requirements.txt
+    	sudo cp sudomy /usr/local/bin
+    	cd
 
-    # Install Shodomain
+    	# Install Shodomain
 	printf '\n============================================================\n'
 	printf  '=========Installing Shodomain\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/SmoZy92/Shodomain
-    cd Shodomain
-    pip install -r requirements.txt
-    sudo chmod +x shodomain.py
-    sudo mv shodomain.py /bin
-    rm -r Shodamin
-    cd
+    	cd Shodomain
+    	pip install -r requirements.txt
+    	sudo chmod +x shodomain.py
+    	sudo mv shodomain.py /bin
+    	rm -r Shodamin
+    	cd
 
-    # Install Censys-Subdomain-Finder
+    	# Install Censys-Subdomain-Finder
 	printf '\n============================================================\n'
 	printf  '=========Installing Censys-Subdomain-Finder\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/christophetd/censys-subdomain-finder.git
-    cd censys-subdomain-finder
-    pip3 install -r requirements.txt
-    sudo chmod +x censy-subdomain-finder.py
-    sudo mv censy-subdomain-finder.py /bin
-    rm -r censys-subdomain-finder
-    cd
+    	cd censys-subdomain-finder
+    	pip3 install -r requirements.txt
+    	sudo chmod +x censy-subdomain-finder.py
+    	sudo mv censy-subdomain-finder.py /bin
+    	rm -r censys-subdomain-finder
+    	cd
 
-    # Install Pinkerton
+   	 # Install Pinkerton
 	printf '\n============================================================\n'
 	printf  '=========Installing Pinkerton\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/oppsec/pinkerton.git
-    cd pinkerton
-    pip3 install -r requirements.txt
-    cd
+    	cd pinkerton
+    	pip3 install -r requirements.txt
+    	cd
 
 	# Install Sublime Text
 	printf '\n============================================================\n'
 	printf  '=========Installing Sublime Text\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 	apt-get install apt-transport-https
 	printf "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 	apt-get update
 	apt-get install sublime-text
 
-	# Install Bloodhound
-	printf '\n============================================================\n'
-	printf  '=========Installing Bloodhound\n'
-	printf '============================================================\n\n'
-	git clone https://github.com/fox-it/BloodHound.py.git
-	cd BloodHound.py
-	python3 setup.py install
-	cd
-	apt install bloodhound
-	curl -o "~/.config/bloodhound/customqueries.json" "https://raw.githubusercontent.com/CompassSecurity/BloodHoundQueries/master/customqueries.json"
-	apt install neo4j
-	neo4j console
-	sleep 30
-	echo -e "Open Browser to localhost:7474 login with user: neo4j pass: neo4j change password to IP20bmrbpz!"
-
-	# Install Brute Shark
-	printf '\n============================================================\n'
-	printf  '=========Installing Brute Shark\n'
-	printf '============================================================\n\n'
-	wget https://github.com/odedshimon/BruteShark/releases/latest/download/BruteSharkCli
-
-	#Download Cobalt Strike
-	printf '\n============================================================\n'
-	printf  '=========Downloading Cobalt Strike\n'
-	printf '============================================================\n\n'
-	wget --header 'Authorization: token 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' https://github.com/ipc-security/DownloadCobalt/archive/refs/heads/main.zip
-	unzip main.zip
-	rm main.zip
-	cd DownloadCobalt-main
-	chmod +x download-cobalt.sh
-	mv download-cobalt.sh /root/
-	cd DownloadCobalt-main
-	rm -r 
-	./download-cobalt.sh
-
 	# Install CloudBrute
 	printf '\n============================================================\n'
 	printf  '=========Installing CloudBrute\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	wget wget https://github.com/0xsha/CloudBrute/releases/download/v1.0.7/cloudbrute_1.0.7_Linux_x86_64.tar.gz
 	tar -xf cloudbrute_1.0.7_Linux_x86_64.tar.gz
 	rm cloudbrute_1.0.7_Linux_x86_64.tar.gz
-	mv cloudbrute /usr/bin/
+	mv cloudbrute /bin
 	
-	# Start Docker with system
-	systemctl enable docker --now
-
-	# Install ffuff
-	go install github.com/ffuf/ffuf@latest
-
-	# Install Arjun
-	pip3 install arjun
-
-	# Install Golang
-	wget https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
-	rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
-	export PATH=$PATH:/usr/local/go/bin
-	. "$HOME/.profile"
-
 	# Install Cloud_Enum
 	printf '\n============================================================\n'
 	printf  '=========Installing CloudEnum\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/cloud_enum.git
 	cd cloud_enum
 	pip3 install -r ./requirements.txt
@@ -260,7 +219,7 @@
 	# Install Tor/Tor Browser
 	printf '\n============================================================\n'
 	printf  '=========Installing Tor/Tor Browser\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	apt install tor torbrowser-launcher -y
 	tor --hash-password recon6
 	sleep 30
@@ -271,7 +230,7 @@
 	# Install BeefAuto
 	printf '\n============================================================\n'
 	printf  '=========Installing BeefAuto\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/BeefAuto.git
 	cd BeefAuto
 	pip3 install -r requirements.txt
@@ -280,7 +239,7 @@
 	# Install Eyewitness
 	printf '\n============================================================\n'
 	printf  '=========Installing Eyewitness\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/EyeWitness.git
 	cd EyeWitness/Python/setup/
 	./setup.sh
@@ -289,7 +248,7 @@
 	# Install website-passive-reconnaissance
 	printf '\n============================================================\n'
 	printf  '=========Installing website-passive-reconnaissance\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/website-passive-reconnaissance.git
 	cd website-passive-reconnaissance
 	pip install -r requirements.txt
@@ -302,7 +261,7 @@
 	# Install Duplicut
 	printf '\n============================================================\n'
 	printf  '=========Installing duplicut\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/nil0x42/duplicut
 	cd duplicut
 	make
@@ -312,7 +271,7 @@
 	# Install Spring4shell
 	printf '\n============================================================\n'
 	printf  '=========Installing Spring4shell\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/spring4shell-scan.git
 	cd spring4shell-scan
 	sudo docker build -t spring4shell-scan .
@@ -321,7 +280,7 @@
 	# Install IMAP Sprayer
 	printf '\n============================================================\n'
 	printf  '=========IMAP Sprayer\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	https://github.com/yok4i/imapsprayer.git
 	cd imapsprayer
 	poetry install
@@ -330,7 +289,7 @@
 	# Install SprayCannon
 	printf '\n============================================================\n'
 	printf  '=========SprayCannon\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	https://github.com/CausticKirbyZ/SprayCannon.git
 	cd SprayCannon
 	make init
@@ -346,15 +305,23 @@
 	# Install ssb
 	printf '\n============================================================\n'
 	printf  '=========Installing ssb\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	sudo curl -sSfL 'https://git.io/kitabisa-ssb' | sh -s -- -b /usr/local/bin
+	
+	# Install Oh365UserFinder
+	printf '\n============================================================\n'
+	printf  '=========Installing Oh365UserFinder\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/dievus/Oh365UserFinder.git
+	cd Oh365UserFinder
+	pip3 install -r requirements.txt
 	
 	# Unzip Rockyou.txt.gz
 	printf '\n============================================================\n'
 	printf  '=========Unzip copy rockyou\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	gzip -d /usr/share/wordlists/rockyou.txt.gz
-	cp /usr/share/wordlists/rockyou.txt /root/
+	mv /usr/share/wordlists/rockyou.txt /root/
 
 	# Installing BScripts
 	mkdir BScripts
@@ -372,22 +339,22 @@
 	mv IPC-Recon-Script-main IPC-Recon-Script
 	cd IPC-Recon-Script
 	chmod +x *.sh
-	bash install.sh
+	./install.sh
 	cd
 	
 	# Upgrade System
 	printf '\n============================================================\n'
 	printf  '=========Updating & Upgrading\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	apt-get update && apt-get full-upgrade
 	
 	# The End
 	printf '\n============================================================\n'
 	printf  '=========All Tools Installed\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 
 	# Rebooting Sytem
 	printf '\n============================================================\n'
 	printf  '=========Rebooting System\n'
-	printf '============================================================\n\n'
+	printf  '============================================================\n\n'
 	reboot now
