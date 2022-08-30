@@ -451,25 +451,6 @@
 	printf  '============================================================\n\n'
 	gzip -d /usr/share/wordlists/rockyou.txt.gz
 	mv /usr/share/wordlists/rockyou.txt /root/
-
-	# Installing BScripts
-	mkdir BScripts
-	cd BScripts
-	wget --header 'Authorization: token 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' https://github.com/ipc-security/Kali-Setup/archive/refs/heads/main.zip
-	unzip main.zip
-	rm main.zip
-	mv Kali-Setup-main Kali-Setup
-	cd Kali-Setup
-	chmod +x *.sh *.py
-	cd ..
-	wget --header 'Authorization: token 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' https://github.com/ipc-security/IPC-Recon-Script/archive/refs/heads/main.zip
-	unzip main.zip
-	rm main.zip
-	mv IPC-Recon-Script-main IPC-Recon-Script
-	cd IPC-Recon-Script
-	chmod +x *.sh
-	./install.sh
-	cd
 	
 	# Upgrade System
 	printf '\n============================================================\n'
