@@ -12,33 +12,15 @@
 #  Editor:    Brian McGinn
 # ====================================================
 
-	# logging in as root user and changing the directory
-	sudo su -
+	# Run from root directory
 	cd /root
-
-	# Make sure your root
-	 if [ "$HOME" != "/root" ]
-	 then
-     	printf "Run while logged in as root\n"
-     	exit 1
-	 fi
-
-	# Enable Command Aliasing
-	shopt -s expand_aliases
-
-	# Skip prompts in apt-upgrade, etc.
-	export DEBIAN_FRONTEND=noninteractive
-	alias apt-get='yes "" | apt-get -o Dpkg::Options::="--force-confdef" -y'
 
 	# Update Repositories
 	printf '\n============================================================\n'
 	printf  '=========Update/Kali-Everything/Update/Upgrade\n'
 	printf '============================================================\n\n'
-	apt update
-	apt install kali-linux-everything
-	apt update
-	apt upgrade
-	apt full-upgrade
+	apt update -y
+	apt upgrade -y
 	
 	# Install Desktop/RDP
 	printf '\n============================================================\n'
@@ -477,7 +459,7 @@
 	printf '\n============================================================\n'
 	printf  '=========Updating & Upgrading\n'
 	printf  '============================================================\n\n'
-	apt-get update && apt-get full-upgrade
+	apt update -y && apt upgrade -y
 	
 	# The End
 	printf '\n============================================================\n'
