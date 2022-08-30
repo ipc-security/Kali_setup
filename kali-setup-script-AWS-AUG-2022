@@ -40,6 +40,14 @@
 	apt upgrade
 	apt full-upgrade
 	
+	# Install Desktop/RDP
+	printf '\n============================================================\n'
+	printf  '=========Install Desktop/RDP\n'
+	printf '============================================================\n\n'
+	sudo apt -y install kali-desktop-xfce xrdp
+	sudo systemctl enable xrdp
+	sudo systemctl restart xrdp
+	
 	# Install scripts with apt install
 	printf '\n============================================================\n'
 	printf  '=========Install scripts with apt install\n'
