@@ -120,8 +120,137 @@
 	go install github.com/projectdiscovery/httpx/cmd/httpx@latest
 	go install github.com/tomnomnom/gf@latest
 	go install github.com/tomnomnom/qsreplace@latest
-	go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 	go install github.com/ffuf/ffuf@latest
+	
+	# Install Nuclei/Templates
+	printf '\n============================================================\n'
+	printf  '=========Installing Nuclei/Templates\n'
+	printf  '============================================================\n\n'
+	go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+	nuclei -update-templates
+	mkdir /root/nuclei-templates/open-source-nuclei-templates
+	cd /root/nuclei-templates/open-source-nuclei-templates
+	mkdir nuclei-1
+	cd nucei-1
+	git clone https://github.com/1in9e/my-nuclei-templates
+	cd ..
+	mkdir nuclei-2
+	cd nuclei-2
+	git clone https://github.com/daffainfo/my-nuclei-templates
+	cd ..
+	mkdir nuclei-3
+	cd nuclei-3
+	git clone https://github.com/ree4pwn/my-nuclei-templates
+	cd ..
+	mkdir nuclei-4
+	cd nuclei-4
+	git clone https://github.com/Str1am/my-nuclei-templates
+	cd ..
+	mkdir nuclei-5
+	cd nuclei-5
+	git clone https://github.com/adampielak/nuclei-templates
+	cd ..
+	mkdir nuclei-6
+	cd nuclei-6
+	git clone https://github.com/AshiqurEmon/nuclei_templates
+	cd ..
+	mkdir nuclei-7
+	cd nuclei-7
+	git clone https://github.com/blazeinfosec/nuclei-templates
+	cd ..
+	mkdir nuclei-8
+	cd nuclei-8
+	git clone https://github.com/c-sh0/nuclei_templates
+	cd ..
+	mkdir nuclei-9
+	cd nuclei-9
+	git clone https://github.com/javaongsan/nuclei-templates
+	cd ..
+	mkdir nuclei-10
+	cd nuclei-10
+	git clone https://github.com/panch0r3d/nuclei-templates
+	cd ..
+	mkdir nuclei-11
+	cd nuclei-11
+	git clone https://github.com/rahulkadavil/nuclei-templates
+	cd ..
+	mkdir nuclei-12
+	cd nuclei-12
+	git clone https://github.com/redteambrasil/nuclei-templates
+	cd ..
+	mkdir nuclei-13
+	cd nuclei-13
+	git clone https://github.com/th3r4id/nuclei-templates
+	cd ..
+	mkdir nuclei-14
+	cd nuclei-14
+	git clone https://github.com/z3bd/nuclei-templates
+	cd ..
+	mkdir nuclei-15
+	cd nuclei-15
+	git clone https://github.com/clarkvoss/Nuclei-Templates
+	cd ..
+	mkdir nuclei-16
+	cd nuclei-16
+	git clone https://github.com/ekinsb/Nuclei-Templates
+	cd ..
+	mkdir nuclei-17
+	cd nuclei-17
+	git clone https://github.com/Harish4948/Nuclei-Templates
+	cd ..
+	mkdir nuclei-18
+	cd nuclei-18
+	git clone https://github.com/peanuth8r/Nuclei_Templates
+	cd ..
+	mkdir nuclei-19
+	cd nuclei-19
+	git clone https://github.com/rafaelcaria/Nuclei-Templates
+	cd ..
+	mkdir nuclei-20
+	cd nuclei-20
+	git clone https://github.com/dk4trin/templates-nuclei
+	cd ..
+	mkdir nuclei-21
+	cd nuclei-21
+	git clone https://github.com/KeepHowling/all_freaking_nuclei_templates
+	git clone https://github.com/kh4sh3i/CVE-2022-23131
+	git clone https://github.com/n1f2c3/mytemplates
+	git clone https://github.com/notnotnotveg/nuclei-custom-templates
+	cd ..
+	mkdir nuclei-22
+	cd nuclei-22
+	git clone https://github.com/obreinx/nuceli-templates
+	cd ..
+	mkdir nuclei-23
+	cd nuclei-23
+	git clone https://github.com/Odayex/Random-Nuclei-Templates
+	cd ..
+	mkdir nuclei-24
+	cd nuclei-24
+	git clone https://github.com/ping-0day/templates
+	cd ..
+	mkdir nuclei-25
+	cd nuclei-25
+	git clone https://github.com/wr00t/templates
+	cd ..
+	mkdir nuclei-26
+	cd nuclei-26
+	git clone https://github.com/securitytest3r/nuclei_templates_work
+	cd ..
+	mkdir nuclei-27
+	cd nuclei-27
+	git clone https://github.com/sharathkramadas/k8s-nuclei-templates
+	cd ..
+	mkdir nuclei-28
+	cd nuclei-28
+	git clone https://github.com/shifa123/detections
+	git clone https://github.com/System00-Security/backflow
+	git clone https://github.com/thebrnwal/Content-Injection-Nuclei-Script
+	git clone https://github.com/themastersunil/nucleiDB
+	git clone https://github.com/toramanemre/apache-solr-log4j-CVE-2021-44228
+	git clone https://github.com/toramanemre/log4j-rce-detect-waf-bypass
+	git clone https://github.com/trickest/log4j
+	git clone https://github.com/zinminphyo0/KozinTemplates
 
 	# Install Findomain
 	printf '\n============================================================\n'
