@@ -253,6 +253,15 @@
 	printf  '============================================================\n\n'
 	curl https://sh.rustup.rs -sSf | sh
 	
+	# Install LogSensor
+	printf '\n============================================================\n'
+	printf  '=========Installing LogSensor\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/Mr-Robert0/Logsensor.git
+	cd Logsensor && sudo chmod +x logsensor.py install.sh
+	pip install -r requirements.txt
+	./install.sh
+	
 	# Install x8
 	printf '\n============================================================\n'
 	printf  '=========Installing x8\n'
