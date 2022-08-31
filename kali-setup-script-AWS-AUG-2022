@@ -274,6 +274,15 @@
 	printf  '============================================================\n\n'
 	pipx install bbot
 	
+	# Install ninjac2
+	printf '\n============================================================\n'
+	printf  '=========Installing ninjac2\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/ahmedkhlief/Ninja
+	cd Ninja
+	chmod +x install.sh
+	./install.sh
+	
 	# Install DNS Reaper
 	printf '\n============================================================\n'
 	printf  '=========Installing DNS Reaper\n'
