@@ -265,6 +265,13 @@
 	rm findomain-linux.zip
 	chmod +x findomain
 	sudo mv findomain /bin
+	
+	# Install DNS Reaper
+	printf '\n============================================================\n'
+	printf  '=========Installing DNS Reaper\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/punk-security/dnsReaper.git
+	pip install -r requirements.txt
 
     	# Install CTFR
 	printf '\n============================================================\n'
