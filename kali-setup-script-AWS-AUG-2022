@@ -48,7 +48,8 @@
     	python3-censys \
     	jq \
     	sublist3r \
-    	parallel
+    	parallel \
+	ruby
 	
 	# Install scripts with pip
 	printf '\n============================================================\n'
@@ -241,6 +242,20 @@
 	git clone https://github.com/toramanemre/log4j-rce-detect-waf-bypass
 	git clone https://github.com/trickest/log4j
 	git clone https://github.com/zinminphyo0/KozinTemplates
+	
+	# Install Rust
+	printf '\n============================================================\n'
+	printf  '=========Installing Rust\n'
+	printf  '============================================================\n\n'
+	curl https://sh.rustup.rs -sSf | sh
+	
+	# Install x8
+	printf '\n============================================================\n'
+	printf  '=========Installing x8\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/Sh1Yo/x8
+	cd x8
+	cargo build --release
 
 	# Install Findomain
 	printf '\n============================================================\n'
@@ -332,7 +347,16 @@
 	printf  '============================================================\n\n'
 	git clone https://github.com/ipc-security/cloud_enum.git
 	cd cloud_enum
-	pip3 install -r ./requirements.txt
+	pip3 install -r requirements.txt
+	cd
+	
+	# Install Toxssin
+	printf '\n============================================================\n'
+	printf  '=========Installing Toxssin\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/t3l3machus/toxssin
+	cd toxssin
+	pip3 install -r requirements.txt
 	cd
 
 	# Install Tor/Tor Browser
