@@ -49,7 +49,8 @@
     	jq \
     	sublist3r \
     	parallel \
-	ruby
+	ruby \
+	docker-compose
 	
 	# Install scripts with pip
 	printf '\n============================================================\n'
@@ -80,7 +81,7 @@
 	git clone https://github.com/ipc-security/fireprox.git
 	git clone https://github.com/ipc-security/procrustes.git
 
-	# Install Docker/Docker Compose
+	# Install Docker
 	sudo apt install -y docker.io
 	sudo systemctl enable docker --now
 	printf '%s\n' "deb https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker-ce.list
