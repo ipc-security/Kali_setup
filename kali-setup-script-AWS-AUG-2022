@@ -434,15 +434,6 @@
 	service tor restart
 	torbrowser-launcher
 
-	# Install BeefAuto
-	printf '\n============================================================\n'
-	printf  '=========Installing BeefAuto\n'
-	printf  '============================================================\n\n'
-	git clone https://github.com/ipc-security/BeefAuto.git
-	cd BeefAuto
-	pip3 install -r requirements.txt
-	cd
-
 	# Install Eyewitness
 	printf '\n============================================================\n'
 	printf  '=========Installing Eyewitness\n'
