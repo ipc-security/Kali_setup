@@ -268,6 +268,13 @@
 	chmod +x findomain
 	sudo mv findomain /bin
 	
+	# Install XSSCon
+	printf '\n============================================================\n'
+	printf  '=========Installing XSSCon\n'
+	printf  '============================================================\n\n'
+	git clone https://github.com/menkrep1337/XSSCon
+	chmod 755 -R XSSCon
+	
 	# Install bbot
 	printf '\n============================================================\n'
 	printf  '=========Installing bbot\n'
