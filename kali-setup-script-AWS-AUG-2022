@@ -244,6 +244,9 @@
 	git clone https://github.com/trickest/log4j
 	git clone https://github.com/zinminphyo0/KozinTemplates
 	
+	## Install Sliver
+	curl https://sliver.sh/install|sudo bash
+	
 	# Install Rust
 	printf '\n============================================================\n'
 	printf  '=========Installing Rust\n'
