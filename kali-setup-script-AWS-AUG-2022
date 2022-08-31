@@ -80,6 +80,7 @@
 	git clone https://github.com/ipc-security/ShellShockHunter.git
 	git clone https://github.com/ipc-security/fireprox.git
 	git clone https://github.com/ipc-security/procrustes.git
+	git clone https://github.com/makdosx/mip22.git
 
 	# Install Docker
 	sudo apt install -y docker.io
