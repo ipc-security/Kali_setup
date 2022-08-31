@@ -263,6 +263,19 @@
 	./install.sh
 	cd
 	
+	# Install beef
+	printf '\n============================================================\n'
+	printf  '=========Installing beef\n'
+	printf  '============================================================\n\n'
+	apt install beef-xss -y
+	wget --header 'Authorization: token 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' https://github.com/ipc-security/phishing-pages/archive/refs/heads/main.zip
+	unzip main.zip
+	rm main.zip
+	cd phishing-pages-main
+	cp -r  Microsoft /var/www/html/
+	cd ..
+	rm /var/www/html/index.*
+	
 	# Install x8
 	printf '\n============================================================\n'
 	printf  '=========Installing x8\n'
