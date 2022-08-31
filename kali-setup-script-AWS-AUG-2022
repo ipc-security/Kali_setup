@@ -267,6 +267,12 @@
 	chmod +x findomain
 	sudo mv findomain /bin
 	
+	# Install bbot
+	printf '\n============================================================\n'
+	printf  '=========Installing bbot\n'
+	printf  '============================================================\n\n'
+	pipx install bbot
+	
 	# Install DNS Reaper
 	printf '\n============================================================\n'
 	printf  '=========Installing DNS Reaper\n'
