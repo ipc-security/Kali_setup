@@ -50,7 +50,8 @@
     	sublist3r \
     	parallel \
 	ruby \
-	docker-compose
+	docker-compose \
+	webhttrack
 	
 	# Install scripts with pip
 	printf '\n============================================================\n'
