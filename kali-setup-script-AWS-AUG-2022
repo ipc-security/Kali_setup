@@ -51,7 +51,8 @@
     	parallel \
 	ruby \
 	docker-compose \
-	webhttrack
+	webhttrack \
+	xsltproc
 	
 	# Install scripts with pip
 	printf '\n============================================================\n'
