@@ -261,6 +261,7 @@
 	cd Logsensor && sudo chmod +x logsensor.py install.sh
 	pip install -r requirements.txt
 	./install.sh
+	cd
 	
 	# Install x8
 	printf '\n============================================================\n'
