@@ -8,8 +8,8 @@
 #
 #  Author:    Brian McGinn
 #  Created:   August 30 2022
-#  Last Edit: August 30 2022
-#  Editor:    Brian McGinn
+#  Last Edit: September 6 2022
+#  Editor:    Akash Zatakia
 # ====================================================
 
 	# Run from root directory
@@ -30,6 +30,19 @@
 	sudo systemctl enable xrdp
 	sudo systemctl restart xrdp
 	
+	# creating user for RDP 
+	printf '\n============================================================\n'
+	printf  '=========Creating User for RDP\n'
+	printf '============================================================\n\n'
+	username="security"
+	password="security@123"
+	pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+	echo "$pass"
+	useradd -m -p "$pass" "$username"
+	chsh -s /bin/zsh "$username"
+	usermod -a -G sudo "$username"
+
+
 	# Install scripts with apt install
 	printf '\n============================================================\n'
 	printf  '=========Install scripts with apt install\n'
