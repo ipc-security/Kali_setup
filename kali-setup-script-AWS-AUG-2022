@@ -173,7 +173,10 @@
 	printf '\n============================================================\n'
 	printf  '=========Installing Sliver\n'
 	printf  '============================================================\n\n'
+	mkdir Sliver
+	cd Sliver
 	curl https://sliver.sh/install|sudo bash
+	cd
 	
 	# Install Rust
 	printf '\n============================================================\n'
