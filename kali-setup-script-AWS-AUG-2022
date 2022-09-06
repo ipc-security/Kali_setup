@@ -30,19 +30,18 @@
 	sudo systemctl enable xrdp
 	sudo systemctl restart xrdp
 	
-	# creating user for RDP 
+	# Creating Security User 
 	printf '\n============================================================\n'
-	printf  '=========Creating User for RDP\n'
+	printf  '=========Creating Security User\n'
 	printf '============================================================\n\n'
 	username="security"
-	password="security@123"
+	password="IP20bmrbpz!"
 	pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
 	echo "$pass"
 	useradd -m -p "$pass" "$username"
 	chsh -s /bin/zsh "$username"
 	usermod -a -G sudo "$username"
-
-
+	
 	# Install scripts with apt install
 	printf '\n============================================================\n'
 	printf  '=========Install scripts with apt install\n'
