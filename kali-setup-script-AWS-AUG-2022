@@ -137,7 +137,42 @@
 	go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 	nuclei -update-templates
 	
+	# Install VSCode
+	printf '\n============================================================\n'
+	printf  '=========Installing VSCode\n'
+	printf  '============================================================\n\n'
+	sudo apt-get install wget gpg
+	wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+	sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+	sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+	rm -f packages.microsoft.gpg
+	sudo apt install apt-transport-https
+	sudo apt update
+	sudo apt install code
+	
+	## Install Node.js/NPM
+	printf '\n============================================================\n'
+	printf  '=========Installing Node.js/NPM\n'
+	printf  '============================================================\n\n'
+	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+	sudo apt update
+	sudo apt install nodejs
+	
+	## Install Showdown/
+	printf '\n============================================================\n'
+	printf  '=========Installing Node.js/NPM\n'
+	printf  '============================================================\n\n'
+	npm install -g showdown
+	npm install -g markdown-it
+	
+	printf '\n============================================================\n'
+	printf  '=========Installing Node.js/NPM\n'
+	printf  '============================================================\n\n'
+	
 	## Install Sliver
+	printf '\n============================================================\n'
+	printf  '=========Installing Sliver\n'
+	printf  '============================================================\n\n'
 	curl https://sliver.sh/install|sudo bash
 	
 	# Install Rust
