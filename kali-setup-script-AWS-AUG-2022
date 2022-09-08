@@ -72,6 +72,8 @@
 	printf  '============================================================\n\n'
 	pip install poetry
 	pip install pipreqs
+	pip3 install stem
+	pip3 install stemming
 	pip3 install arjun
 	python3 -m pip install lsassy
 	python3 -m pip install pipenv
